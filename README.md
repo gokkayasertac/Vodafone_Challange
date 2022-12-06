@@ -112,8 +112,6 @@ Vodafone acceptance project
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -123,7 +121,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Sertaç Gökkaya - [@LinkedIn](https://www.linkedin.com/in/sertacgokkaya/) - sertacgokkaya@gmail.com
 
-Project Link:
+Project Link: [https://github.com/gokkayasertac/Vodafone_Challange](https://github.com/gokkayasertac/Vodafone_Challange)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
