@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Vodafone Challange</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="repositories">Repositories</string>
+    <string name="repository_detail">Repository Detail</string>
+    <string name="user_detail">User Detail (Traex)</string>
+</resources>
