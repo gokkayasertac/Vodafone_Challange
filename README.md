@@ -79,8 +79,8 @@ Vodafone acceptance project
 * 
 <!-- USAGE EXAMPLES -->
 ## Visual
-| Demo                |
-|---------------------|
+| Demo |  
+| --- | 
 | ![Preview](app.gif) | 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
