@@ -1,6 +1,7 @@
 package com.sertac.vodafonechallange.presentation.userprofile
 
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Email
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class UserProfileFragment : Fragment() {
     private lateinit var viewModel: UserProfileViewModel
     private lateinit var userReposAdapter: UserReposAdapter
     private lateinit var userName: String
+    private var userEmail: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,11 +54,13 @@ class UserProfileFragment : Fragment() {
                     val userRepo = userReposAdapter.repoList?.get(it)
                     val action =
                         UserProfileFragmentDirections.actionUserProfileFragmentToRepositoryDetailFragment(
-                            userRepo?.repositoryOwner?.avatarUrl,
-                            userRepo?.description,
+                            userRepo?.defaultBranch,
+                            userRepo?.language,
                             userRepo?.repositoryOwner?.login,
+                            userEmail,
                             userRepo?.name,
-                            userRepo?.private == true
+                            "Forks count: ${userRepo?.forksCount}",
+                            userRepo?.repositoryOwner?.avatarUrl,
                         )
                     val extras = FragmentNavigatorExtras(binding.userAvatarImageView to "userImage")
                     findNavController().navigate(action,extras)
@@ -78,6 +82,11 @@ class UserProfileFragment : Fragment() {
                 context?.let { nonNullContext ->
                     Glide.with(nonNullContext).load(it.avatarUrl).into(binding.userAvatarImageView)
                 }
+                userEmail = it.email
+                if (userEmail.isNullOrEmpty())
+                    binding.userEmailTextView.visibility = View.GONE
+                else
+                    binding.userEmailTextView.text = userEmail
                 binding.userNameTextView.text = it.name
                 binding.userInformationTextView.apply {
                     text = ""

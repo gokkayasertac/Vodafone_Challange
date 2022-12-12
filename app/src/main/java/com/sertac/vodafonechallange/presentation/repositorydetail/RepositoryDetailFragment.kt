@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -33,25 +34,28 @@ class RepositoryDetailFragment : Fragment() {
                     .load(args.repoAvatar)
                     .into(binding.repoOwnerAvatarImageView)
             }
-
-            binding.repoNameTextView.text = args.repoName
-            binding.userNameTextView.text = args.ownerName
-            if (args.private) {
-                binding.privateTextView.text = "Private"
-                binding.privateTextView.setTextColor(Color.RED)
-            } else {
-                binding.privateTextView.text = "Public"
-                binding.privateTextView.setTextColor(Color.GREEN)
-            }
-            binding.repoDescriptionTextView.text = args.description
+            setValueOrHideView(binding.repoNameTextView, args.repoName)
+            setValueOrHideView(binding.userNameTextView, args.ownerName)
+            setValueOrHideView(binding.avatarEmailTextView, args.avatarEmail)
+            setValueOrHideView(binding.forkCountTextView, args.forkCount)
+            setValueOrHideView(binding.languageTextView, args.language)
+            setValueOrHideView(binding.defaultBranchNameTextView, args.defBranchName)
 
         }
-        binding.userNameTextView.setOnClickListener {
+        binding.repoOwnerAvatarImageView.setOnClickListener {
             val action = RepositoryDetailFragmentDirections.actionRepositoryDetailFragmentToUserProfileFragment(
                 binding.userNameTextView.text.toString()
             )
             findNavController().navigate(action)
         }
+
+    }
+
+    private fun setValueOrHideView(view: TextView, value: String?) {
+        if(value.isNullOrEmpty())
+            view.visibility = View.GONE
+        else
+            view.text = value
     }
 
 }

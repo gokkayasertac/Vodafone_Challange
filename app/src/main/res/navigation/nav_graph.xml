@@ -52,11 +52,11 @@
         android:label="fragment_repository_detail"
         tools:layout="@layout/fragment_repository_detail" >
         <argument
-            android:name="repoAvatar"
+            android:name="defBranchName"
             app:argType="string"
             app:nullable="true" />
         <argument
-            android:name="description"
+            android:name="language"
             app:argType="string"
             app:nullable="true" />
         <argument
@@ -64,9 +64,9 @@
             app:argType="string"
             app:nullable="true" />
         <argument
-            android:name="private"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:name="avatarEmail"
+            app:argType="string"
+            app:nullable="true" />
         <argument
             android:name="repoName"
             app:argType="string"
@@ -74,5 +74,13 @@
         <action
             android:id="@+id/action_repositoryDetailFragment_to_userProfileFragment"
             app:destination="@id/userProfileFragment" />
+        <argument
+            android:name="forkCount"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="repoAvatar"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

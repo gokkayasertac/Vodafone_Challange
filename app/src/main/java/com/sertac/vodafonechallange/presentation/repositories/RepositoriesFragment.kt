@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.sertac.vodafonechallange.databinding.FragmentRepositoriesBinding
 import com.sertac.vodafonechallange.presentation.repositories.adapter.OnRepoClickListener
 import com.sertac.vodafonechallange.presentation.repositories.adapter.RepositoriesAdapter
-import com.sertac.vodafonechallange.presentation.userprofile.UserProfileFragmentDirections
 
 class RepositoriesFragment : Fragment() {
 
@@ -53,14 +52,16 @@ class RepositoriesFragment : Fragment() {
         reposAdapter = RepositoriesAdapter(requireContext(), object : OnRepoClickListener {
             override fun onRepoClicked(index: Int?) {
                 index?.let {
-                    val userRepo = reposAdapter.repoList?.get(it)
+                    val repo = reposAdapter.repoList?.get(it)
                     val action =
                         RepositoriesFragmentDirections.actionRepositoriesFragmentToRepositoryDetailFragment(
-                            userRepo?.repositoryOwner?.avatarUrl,
-                            userRepo?.description,
-                            userRepo?.repositoryOwner?.login,
-                            userRepo?.name,
-                            userRepo?.private == true
+                            "",
+                            "",
+                            repo?.repositoryOwner?.login,
+                            "",
+                            repo?.name,
+                                    "Fork count: -",
+                            repo?.repositoryOwner?.avatarUrl
                         )
                     findNavController().navigate(action)
                 }
